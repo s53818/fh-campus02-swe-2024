@@ -30,7 +30,7 @@ public class CalculatorImpl implements Calculator {
                 return a * b;
             case mod:
                 double mod = a % b;
-                if(Double.isInfinite(mod))
+                if(Double.isNaN(mod))
                     throw new CalculatorException("Modulo by zero");
                 return mod;
         }
