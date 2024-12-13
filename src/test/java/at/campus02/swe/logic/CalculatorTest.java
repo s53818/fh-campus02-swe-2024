@@ -82,6 +82,34 @@ public class CalculatorTest {
             assertEquals("Division by zero", e.getMessage());
             // e.getCause()
         }
+    }
 
+    @Test
+    public void testModuloByZero() throws Exception
+    {
+        Calculator calc = new CalculatorImpl();
+        try
+        {
+            calc.push(2);
+            calc.push(0);
+            calc.perform(Operation.mod);
+
+            fail("Exception expected");
+        }
+        catch (CalculatorException e)
+        {
+            assertEquals("Modulo by zero", e.getMessage());
+        }
+    }
+
+    @Test
+    public void testSimpleModuloCalculation() throws Exception
+    {
+        Calculator calc = new CalculatorImpl();
+        calc.push(6);
+        calc.push(4);
+        double result = calc.perform(Operation.mod);
+
+        assertEquals(2, result, 0);
     }
 }
