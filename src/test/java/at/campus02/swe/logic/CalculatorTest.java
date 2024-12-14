@@ -112,4 +112,40 @@ public class CalculatorTest {
 
         assertEquals(2, result, 0);
     }
+
+    @Test
+    public void testSinOne() throws Exception
+    {
+        Calculator calc = new CalculatorImpl();
+        calc.push(90);
+        double result = calc.perform(Operation.sin);
+        assertEquals(1, result, 0);
+    }
+
+    @Test
+    public void testSinNull() throws Exception
+    {
+        Calculator calc = new CalculatorImpl();
+        calc.push(180);
+        double result = calc.perform(Operation.sin);
+        assertEquals(0, result, 0.0000001);
+    }
+
+    @Test
+    public void testCosOne() throws Exception
+    {
+        Calculator calc = new CalculatorImpl();
+        calc.push(0);
+        double result = calc.perform(Operation.cos);
+        assertEquals(1, result, 0);
+    }
+
+    @Test
+    public void testCosNull() throws Exception
+    {
+        Calculator calc = new CalculatorImpl();
+        calc.push(90);
+        double result = calc.perform(Operation.cos);
+        assertEquals(0, result, 0.0000001);
+    }
 }
