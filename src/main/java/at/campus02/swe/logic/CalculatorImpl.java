@@ -3,7 +3,9 @@ package at.campus02.swe.logic;
 
 import at.campus02.swe.Calculator;
 import at.campus02.swe.CalculatorException;
+import at.campus02.swe.parser.Parser;
 
+import java.util.Arrays;
 import java.util.Stack;
 
 public class CalculatorImpl implements Calculator {
@@ -23,6 +25,8 @@ public class CalculatorImpl implements Calculator {
 
     @Override
     public double perform(Operation op) throws CalculatorException {
+
+        if(op == Operation.dotProduct) return performDotProduct();
 
         if(op == Operation.sin || op == Operation.cos) return performSingleOperation(op);
 
@@ -48,6 +52,28 @@ public class CalculatorImpl implements Calculator {
                 return mod;
         }
         return 0;
+    }
+
+    @Override
+    public double performDotProduct() throws CalculatorException
+    {
+        if (stack_.isEmpty())
+            throw new CalculatorException();
+
+        double dimensions = stack_.pop();
+        int size = stack_.size();
+        double[] stack = new double[size];
+        int result = 0;
+
+        for (int i = 0; i < size; i++) {
+            stack[i] = stack_.pop();
+        }
+
+        for(int i = 0; i < stack.length/2; i++) {
+            result = (int) (result + (stack[i] * stack[i+(int)dimensions]));
+        }
+
+        return result;
     }
 
     @Override
