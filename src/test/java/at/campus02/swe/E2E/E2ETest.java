@@ -36,4 +36,27 @@ public class E2ETest {
 
         assertEquals(3, result, 0);
     }
+
+    @Test
+    public void testE2ESin () throws CalculatorException, XMLStreamException, FileNotFoundException
+    {
+        Calculator cal = new CalculatorImpl();
+
+        Parser parser = new Parser(cal);
+        double result = parser.parse(new File("src/test/resources/test05.xml"));
+
+        assertEquals(1, result, 0);
+    }
+
+    @Test
+    public void testE2ECos () throws CalculatorException, XMLStreamException, FileNotFoundException
+    {
+        Calculator cal = new CalculatorImpl();
+
+        Parser parser = new Parser(cal);
+        double result = parser.parse(new File("src/test/resources/test06.xml"));
+
+        assertEquals(1, result, 0);
+    }
+
 }
