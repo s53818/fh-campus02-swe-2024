@@ -47,7 +47,7 @@ public class ParserTest {
         Calculator cal = mock(Calculator.class);
 
         Parser parser = new Parser(cal);
-        parser.parse(new File("src/test/resources/test01.xml"));
+        parser.parse(new File("src/test/resources/test04.xml"));
 
         verify(cal).push(6.0);
         verify(cal).push(4.0);
