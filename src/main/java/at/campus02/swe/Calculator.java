@@ -5,7 +5,7 @@ import at.campus02.swe.parser.Parser;
 public interface Calculator {
 
     enum Operation {
-        add, sub, mul, div, mod, dotProduct
+        add, sub, mul, div, mod, sin, cos, dotProduct,
     };
 
     void push(double value);

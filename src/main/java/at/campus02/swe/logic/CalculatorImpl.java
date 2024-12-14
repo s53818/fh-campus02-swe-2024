@@ -12,10 +12,23 @@ public class CalculatorImpl implements Calculator {
 
     private Stack<Double> stack_ = new Stack<Double>();
 
+    public double performSingleOperation(Operation op) throws CalculatorException {
+        double a = pop();
+
+        return switch (op) {
+            case sin -> Math.sin(a * Math.PI / 180);
+            case cos -> Math.cos(a * Math.PI / 180);
+            default -> 0;
+        };
+
+    }
+
     @Override
     public double perform(Operation op) throws CalculatorException {
 
         if(op == Operation.dotProduct) return performDotProduct();
+
+        if(op == Operation.sin || op == Operation.cos) return performSingleOperation(op);
 
         double b = pop();
         double a = pop();
