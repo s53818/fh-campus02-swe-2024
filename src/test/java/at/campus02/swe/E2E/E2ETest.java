@@ -59,4 +59,38 @@ public class E2ETest {
         assertEquals(1, result, 0);
     }
 
+    @Test
+    public void testDotProductPostive1 () throws CalculatorException, XMLStreamException, FileNotFoundException
+    {
+        Calculator cal = new CalculatorImpl();
+
+        Parser parser = new Parser(cal);
+        double result = parser.parse(new File("src/test/resources/test07.xml"));
+
+        assertEquals(52, result, 0);
+    }
+
+
+    @Test
+    public void testDotProductPostive2 () throws CalculatorException, XMLStreamException, FileNotFoundException
+    {
+        Calculator cal = new CalculatorImpl();
+
+        Parser parser = new Parser(cal);
+        double result = parser.parse(new File("src/test/resources/test08.xml"));
+
+        assertEquals(57, result, 0);
+    }
+    
+
+    @Test(expected = CalculatorException.class)
+    public void testDotProductNegative () throws CalculatorException, XMLStreamException, FileNotFoundException
+    {
+        Calculator cal = new CalculatorImpl();
+
+        Parser parser = new Parser(cal);
+        double result = parser.parse(new File("src/test/resources/test09.xml"));
+
+    }
+
 }
