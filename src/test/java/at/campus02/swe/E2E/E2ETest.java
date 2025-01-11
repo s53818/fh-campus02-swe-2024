@@ -81,6 +81,7 @@ public class E2ETest {
 
         assertEquals(57, result, 0);
     }
+    
 
     @Test(expected = CalculatorException.class)
     public void testDotProductNegative () throws CalculatorException, XMLStreamException, FileNotFoundException
